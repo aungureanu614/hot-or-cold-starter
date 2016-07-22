@@ -40,7 +40,7 @@ function newGame() {
     $('#count').empty().append(count = 0);
     randomNum = Math.floor(Math.random() * (100 - 1) + 1);
     $("#guessButton").prop("disabled", false);
-    alert(randomNum);
+    
 
 }
 
