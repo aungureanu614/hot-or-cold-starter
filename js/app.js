@@ -40,7 +40,7 @@ function newGame() {
     $('#count').empty().append(count = 0);
     randomNum = Math.floor(Math.random() * (100 - 1) + 1);
     $("#guessButton").prop("disabled", false);
-    
+
 
 }
 
@@ -54,6 +54,7 @@ function userFeedback(userNum) {
 
     if (userNum === randomNum) {
         str = "You got it!";
+        displayOnScreen(str, userNum);
         $("#guessButton").prop("disabled", true);
     } else {
 
@@ -70,30 +71,32 @@ function userFeedback(userNum) {
 
             case (userNum - randomNum >= 50) || (randomNum - userNum) >= 50:
                 str = "Ice cold!";
+                displayOnScreen(str, userNum);
                 break;
 
             case (userNum - randomNum >= 30 && userNum - randomNum < 50) || (randomNum - userNum >= 30 && randomNum - userNum < 50):
                 str = "Cold!";
+                displayOnScreen(str, userNum);
                 break;
 
             case (userNum - randomNum >= 20 && userNum - randomNum < 30) || (randomNum - userNum >= 20 && randomNum - userNum < 30):
                 str = "Warm!";
+                displayOnScreen(str, userNum);
                 break;
 
             case (userNum - randomNum >= 10 && userNum - randomNum < 20) || (randomNum - userNum >= 10 && randomNum - userNum < 20):
                 str = "Hot!";
+                displayOnScreen(str, userNum);
                 break;
 
             case (userNum - randomNum >= 1 && userNum - randomNum < 10) || (randomNum - userNum >= 1 && randomNum - userNum < 10):
                 str = "You're on fire!";
+                displayOnScreen(str, userNum);
         }
 
     }
 
-    $('#feedback').empty().append(str);
-    $('#userGuess').val('');
-    counter();
-    $('#guessList').append('<li>' + userNum + '</li>');
+
 
 }
 
@@ -101,4 +104,11 @@ function counter() {
     count += 1;
     $('#count').empty().append(count);
 
+}
+
+function displayOnScreen(userString, num) {
+    $('#feedback').empty().append(userString);
+    $('#userGuess').val('');
+    counter();
+    $('#guessList').append('<li>' + num + '</li>');
 }
